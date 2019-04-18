@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <delete model="ir.ui.view" search="[('id','=', ref('website.login_layout'))]"/>
+    <template id="login" inherit_id="web.login_layout" name="web login">
+        <xpath expr="//t[@t-set='body_classname']" position="replace">
+            <t t-set="body_classname" t-value="'uk-height-1-1 uk-cover-container uk-background-secondary'"/>
+        </xpath>
+
+        <xpath expr="//div[@class='row']" position="replace">
+
+            <div class="uk-grid uk-grid-collapse uk-height-1-1">
+                <div class="uk-width-expand omg-background-login uk-position-relative" t-attf-style="background-image: url('/dev_ui/static/img/background.jpg');">
+                    <div class="uk-position-center-left uk-padding omg-welcome-desc">
+                        <label for="" class="uk-h1 uk-text-background">Selamat Datang</label>
+                        <p class="uk-margin-remove uk-h4">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero maiores sapiente 
+                            cumque aliquam labore? Aliquam, corrupti necessitatibus! 
+                        </p>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-card uk-card-default uk-height-1-1 uk-flex uk-flex-column">
+                        <div class="uk-card-header uk-padding-small">
+                            <nav class="uk-navbar">
+                                <div class="uk-navbar-left">
+                                    <img class="omg-brand-login" src="/dev_ui/static/img/logo.png" alt=""/>
+                                </div>
+
+                                <div class="uk-navbar-right">
+                                    <a href="#">Need a Help?</a>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="uk-card-body uk-flex-1">
+                            <div class="uk-position-center omg-width-medium">
+
+                                <div class="uk-margin-medium-top">
+                                    <ul class="uk-tab uk-flex-center" uk-tab="connect: .uk-switcher">
+                                        <li class="uk-active">
+                                            <a href="#">Sign In</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Sign Up</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="uk-switcher">
+                                    <form class="oe_login_form uk-margin uk-animation-slide-left-small" role="form" t-attf-action="/web/login{{ '?debug' if debug else '' }}" method="post" onsubmit="this.action = this.action + location.hash">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <input type="email" name="login" t-att-value="login" id="login" class="uk-margin-small-top uk-input uk-border-rounded" placeholder="email" required="required" autofocus="autofocus" autocapitalize="off"/>
+                                        <input type="password" name="password" id="password" class="uk-margin-small-top uk-input uk-border-rounded" placeholder="password" required="required" autocomplete="current-password" t-att-autofocus="'autofocus' if login else None" maxlength="4096"/>
+
+                                        <p class="alert alert-danger" t-if="error">
+                                            <t t-esc="error"/>
+                                        </p>
+                                        <p class="alert alert-success" t-if="message">
+                                            <t t-esc="message"/>
+                                        </p>
+
+                                        <input type="hidden" name="redirect" t-att-value="redirect"/>
+                                        <div class="clearfix oe_login_buttons uk-margin-small">
+                                            <button type="submit" class="uk-button uk-button-primary uk-button-default uk-width-1-1 uk-text-capitalize uk-border-rounded">Log in</button>
+                                        </div>
+                                    </form>
+                                    <div>
+                                        <form class="oe_login_form uk-margin uk-animation-slide-left-small" role="form" method="post">
+                                            <input type="email" class="uk-margin-small-top uk-input uk-border-rounded" placeholder="email" required="required" autofocus="autofocus" autocapitalize="off"/>
+                                            <input type="password" class="uk-margin-small-top uk-input uk-border-rounded" placeholder="password" required="required" autocomplete="current-password" t-att-autofocus="'autofocus' if login else None" maxlength="4096"/>
+                                            <input type="password" class="uk-margin-small-top uk-input uk-border-rounded" placeholder="Repeat password" required="required" autocomplete="current-password" t-att-autofocus="'autofocus' if login else None" maxlength="4096"/>
+
+                                            <div class="clearfix oe_login_buttons uk-margin-small">
+                                                <button type="submit" class="uk-button uk-button-primary uk-button-default uk-width-1-1 uk-text-capitalize uk-border-rounded">Sign Up</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-card-footer uk-padding-small">
+                            Forgot Your Password? <a href="#">Click Here</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </xpath>
+    </template>
+</odoo>
