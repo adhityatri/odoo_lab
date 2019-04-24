@@ -1,0 +1,47 @@
+<odoo>
+  <data>
+    <template id="website_layout" inherit_id="website.layout" name="website layout">
+      <xpath expr="//nav[@id='oe_main_menu_navbar']" position="replace"/>
+      <xpath expr="//t[@t-set='body_classname']" position="replace">
+        <t t-set="body_classname" t-value="'uk-height-1-1 uk-container uk-padding'"/>
+      </xpath>
+      <xpath expr="//header" position="replace"/>
+      <xpath expr="//footer" position="replace"/>
+    </template>
+    <template id="example_page" name="Example page" page="True">
+      <t t-call="website.layout">
+        <xpath expr="//div[@id='wrapwrap']" position="replace">
+          <div class="uk-grid uk-margin-medium-top uk-margin-medium-bottom">
+            <div class="uk-width-1-4">
+              <span class="uk-heading-bullet">
+                <img class="omg-brand" src="/create_webpage_demo/static/img/logo.png" alt=""/>
+              </span>
+              <div class="uk-margin-small-top uk-card uk-card-primary omg-card-primary uk-border-rounded uk-card-body uk-padding-small uk-text-center">
+                <img src="/create_webpage_demo/static/img/user.jpg" alt="" class="uk-border-circle uk-box-shadow-medium omg-profile-img" width="100"/>
+                <h4 class="uk-margin-remove">administrator</h4>
+                <a class="uk-button uk-button-danger uk-button-small uk-width-1-1 uk-margin-top uk-border-rounded" href="/web/session/logout?redirect=/web">Logout</a>
+                <!-- <t-att-src="'data:image/png;base64,'+widget.employee_data.image" style="width: 100px;height:100px;"/> -->
+              </div>
+            </div>
+            <div class="uk-width-expand">
+              <h3 class="uk-heading-bullet">
+                Menu
+              </h3>
+              <div class="uk-grid-small uk-child-width-1-4@s uk-text-center uk-grid uk-margin">
+                <t t-foreach="menu_data['children']" t-as="menu">
+                  <div>
+                    <div class="uk-card uk-card-default uk-card-body uk-padding-small uk-margin-bottom uk-border-rounded omg-card-pattern">
+                      <t t-call="web.menu_link">
+                        <t t-set="display_images" t-value="1" />
+                      </t>
+                    </div>
+                  </div>
+                </t>
+              </div>
+            </div>
+          </div>
+        </xpath>
+      </t>
+    </template>
+  </data>
+</odoo>

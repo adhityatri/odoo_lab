@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <template id="assets_login" inherit_id="web.assets_frontend">
+   	 	<xpath expr="." position="inside">
+   	 		<link rel="stylesheet" href="/create_webpage_demo/static/style/lib/uikit/css/uikit.min.css"/>
+   	 		<link rel="stylesheet" href="/create_webpage_demo/static/style/omg/omg-main.less"/>
+
+   	 		<script type="text/javascript" src="/create_webpage_demo/static/style/lib/uikit/js/uikit.min.js"/>
+   	 		<script type="text/javascript" src="/create_webpage_demo/static/style/lib/uikit/js/uikit-icons.min.js"/>
+   	 	</xpath>
+    </template>
+</odoo>
